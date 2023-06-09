@@ -15,7 +15,7 @@ const CarComponent = ({ url, model, year, price }) => {
   const navigation = useNavigation();
 
   return (
-    <View className="px-5 pb-5">
+    <View className="pb-5">
       <View className="border border-slate-100 rounded-xl py-5 px-4 bg-white">
         <Text className="text-lg font-medium">
           {model} ({year})

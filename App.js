@@ -1,7 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./screens/HomeScreen";
-import CarsContextProvider from "./context/CarContext";
+import CarsContextProvider from "./lib/context/car";
 
 const Stack = createNativeStackNavigator();
 
