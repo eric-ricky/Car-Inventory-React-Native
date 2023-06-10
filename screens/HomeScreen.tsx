@@ -1,16 +1,15 @@
-import { useNavigation } from "@react-navigation/native";
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FlatList, SafeAreaView, Text, View } from "react-native";
 import CarComponent from "../components/CarComponent";
 import HeaderComponent from "../components/HeaderComponent";
 import LoadingComponent from "../components/LoadingComponent";
-import { useCarsContext } from "../lib/context/car";
+import { useCarsContext } from "../lib/context/cars";
+import { ICarsData } from "../utils/types";
 
 const HomeScreen = () => {
-  const navigation = useNavigation();
   const carsCtx = useCarsContext();
   const [query, setQuery] = useState("");
-  const [filteredCars, setFilteredCars] = useState([]);
+  const [filteredCars, setFilteredCars] = useState<ICarsData[]>([]);
 
   useEffect(() => {
     if (!carsCtx?.cars) return;
@@ -27,12 +26,6 @@ const HomeScreen = () => {
     setFilteredCars(filtered);
   }, [carsCtx, query]);
 
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerShown: false,
-    });
-  }, []);
-
   return (
     <SafeAreaView className="flex-1 bg-white">
       <HeaderComponent query={query} setQuery={setQuery} />
@@ -43,20 +36,15 @@ const HomeScreen = () => {
         <FlatList
           className="py-10 px-8"
           data={filteredCars}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item: ICarsData) => item.id}
           ListEmptyComponent={() => (
             <View className="items-center space-y-2">
               <Text className="text-2xl">😢</Text>
               <Text className="font-medium">No car was found</Text>
             </View>
           )}
-          renderItem={({ item: car }) => (
-            <CarComponent
-              model={car.model}
-              price={car.price}
-              url={car.url}
-              year={car.year}
-            />
+          renderItem={({ item: car }: { item: ICarsData }) => (
+            <CarComponent car={car} />
           )}
         />
       )}

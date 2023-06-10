@@ -1,7 +1,13 @@
+import { Dispatch, SetStateAction } from "react";
 import { TextInput, TouchableOpacity, View } from "react-native";
 import { MagnifyingGlassIcon, XMarkIcon } from "react-native-heroicons/outline";
 
-const HeaderComponent = ({ query, setQuery }) => {
+interface IProps {
+  query: string;
+  setQuery: Dispatch<SetStateAction<string>>;
+}
+
+const HeaderComponent: React.FC<IProps> = ({ query, setQuery }) => {
   return (
     <View className="flex-row items-center space-x-2 bg-slate-100 rounded-full p-2 pl-4 mx-8 my-4 border border-slate-200 mt-14">
       <MagnifyingGlassIcon size={20} color="#123456" />

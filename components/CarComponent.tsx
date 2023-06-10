@@ -1,19 +1,14 @@
-import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Image, Text, View } from "react-native";
+import { ICarsData } from "../utils/types";
 
-// export interface ICarsData {
-//     id: string;
-//     url: string;
-//     make: string;
-//     model: string;
-//     year: number;
-//     price: number;
-//   }
+interface IProps {
+  car: ICarsData;
+}
 
-const CarComponent = ({ url, model, year, price }) => {
-  const navigation = useNavigation();
-
+const CarComponent: React.FC<IProps> = ({
+  car: { url, model, year, price },
+}) => {
   return (
     <View className="pb-5">
       <View className="border border-slate-100 rounded-xl py-5 px-4 bg-white">
