@@ -14,6 +14,7 @@
     "@reduxjs/toolkit": "^1.9.5",
     "expo": "~48.0.15",
     "expo-status-bar": "~1.4.4",
+    "expo-updates": "~0.16.4",
     "firebase": "^9.21.0",
     "nativewind": "^2.0.11",
     "react": "18.2.0",
